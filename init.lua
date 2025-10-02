@@ -185,6 +185,10 @@ vim.keymap.set("i", "<CapsLock>", "<Esc>")
 vim.keymap.set("v", "<leader>y", '"+y')
 vim.keymap.set("n", "<leader>Y", '"+Y')
 
+-- Move selected lines up
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move line up" })
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line down" })
+
 -- toggle diagnostics
 vim.keymap.set("n", "<leader>dt", function()
 	if vim.diagnostic.is_enabled() then
