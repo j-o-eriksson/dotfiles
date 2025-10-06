@@ -31,15 +31,15 @@ ln -s /opt/nvim-linux-x86_64/bin/nvim /usr/local/bin/nvim
 
 ### fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
+yes "y" | ~/.fzf/install
 
 ### Tmux
 # git clone https://github.com/tmux-plugins/tpm .tmux/plugins/tpm
 
 ### OMZ
-# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
-# git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
-#
-# KEEP_ZSHRC=yes sh -y -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+yes "y" | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-### alacritty
+zsh
+source ~/.zshrc
