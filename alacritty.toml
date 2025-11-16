@@ -1,0 +1,9 @@
+[window]
+startup_mode = "Fullscreen"
+
+[font]
+normal = { family = "JetBrainsMono NF", style = "Medium" }
+size = 12
+
+[mouse]
+hide_when_typing = true

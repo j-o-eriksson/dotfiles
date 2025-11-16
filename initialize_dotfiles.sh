@@ -1,25 +1,24 @@
 ### symlink dotfiles
-ln -fs $(pwd)/.zshrc $HOME/
-ln -fs $(pwd)/.tmux.conf $HOME/
+cp $(pwd)/.zshrc $HOME/
+cp $(pwd)/.tmux.conf $HOME/
 
 mkdir -p $HOME/.config/nvim
-ln -fs $(pwd)/init.lua $HOME/.config/nvim
-ln -fs $(pwd)/lua $HOME/.config/nvim
+cp $(pwd)/init.lua $HOME/.config/nvim
+cp -r $(pwd)/lua $HOME/.config/nvim
 
-apt update && apt install -y \
+sudo apt update && sudo apt install -y \
   g++ \
-  bear \
   unzip \
   curl \
   wget \
   python3 \
+  python3-venv \
   ranger \
   ripgrep \
   sshpass \
   tig \
   tmux \
   tree \
-  python3-venv \
   xclip \
   zsh
 
@@ -34,12 +33,13 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 yes "y" | ~/.fzf/install
 
 ### Tmux
-# git clone https://github.com/tmux-plugins/tpm .tmux/plugins/tpm
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-### OMZ
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
-yes "y" | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
+# start zsh
 zsh
 source ~/.zshrc
+
+### OMZ
+yes "y" | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
