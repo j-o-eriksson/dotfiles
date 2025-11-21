@@ -1,3 +1,12 @@
+#!/bin/bash
+
+# Check if running as root
+if [ "$EUID" -eq 0 ]; then
+    SUDO=""
+else
+    SUDO="sudo"
+fi
+
 ### symlink dotfiles
 cp $(pwd)/.zshrc $HOME/
 cp $(pwd)/.tmux.conf $HOME/
@@ -6,7 +15,7 @@ mkdir -p $HOME/.config/nvim
 cp $(pwd)/init.lua $HOME/.config/nvim
 cp -r $(pwd)/lua $HOME/.config/nvim
 
-sudo apt update && sudo apt install -y \
+$SUDO apt update && $SUDO apt install -y \
   g++ \
   unzip \
   curl \
