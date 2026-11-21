@@ -24,7 +24,7 @@ ZSH_THEME="robbyrussell"
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
+zstyle ':omz:update' mode disabled  # pinned by install/zsh.sh
 # zstyle ':omz:update' mode auto      # update automatically without asking
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
@@ -109,8 +109,16 @@ source $ZSH/oh-my-zsh.sh
 alias gs='git status'
 alias ts='tig status'
 alias tiga='tig --all'
-alias ghostbusters='ssh jonatan@192.168.1.25'
+# Attach to tmux session "main" on a box, starting it if needed: tm <box>
+tm() {
+  [ -n "$TMUX" ] && tmux rename-window "$1"
+  ssh -t "$1" tmux new -A -s main
+}
+compdef tm=ssh
 
 bindkey '^E' end-of-line
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Machine-specific settings, kept out of the repo.
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local

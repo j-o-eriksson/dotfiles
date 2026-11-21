@@ -1,0 +1,10 @@
+# Copy to ~/.ssh/config and fill in one entry per box. The Host name is what `tm <box>`
+# and nvim's :connect use.
+
+Host <box>
+  HostName <ip-or-hostname>
+  User <user>
+
+# Notice a dead connection (sleep, Wi-Fi drop) within ~90 s instead of hanging.
+Host *
+  ServerAliveInterval 30
