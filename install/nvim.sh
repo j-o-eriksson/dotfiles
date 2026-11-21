@@ -18,8 +18,8 @@ $SUDO ln -sf /opt/nvim-linux-x86_64/bin/nvim /usr/local/bin/nvim
 
 # The tree-sitter CLI builds nvim-treesitter's parsers. Its prebuilt binary needs glibc 2.39,
 # so older systems (Ubuntu 22.04) build it with cargo instead.
-glibc="$(ldd --version | head -1 | grep -oE '[0-9]+\.[0-9]+$')"
-if [ "$(printf '%s\n' 2.39 "$glibc" | sort -V | head -1)" = 2.39 ]; then
+glibc="$(getconf GNU_LIBC_VERSION)"
+if printf '%s\n' 2.39 "${glibc#glibc }" | sort -V -C; then
   curl -fsSL "https://github.com/tree-sitter/tree-sitter/releases/download/v$TREE_SITTER_VERSION/tree-sitter-linux-x64.gz" |
     gunzip > "$tmp/tree-sitter"
 else

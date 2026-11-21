@@ -23,5 +23,5 @@ steps=("$@")
 [ ${#steps[@]} -gt 0 ] || steps=(packages links zsh tmux nvim)
 for step in "${steps[@]}"; do
   echo "==> $step"
-  bash "$DOTFILES/install/$step.sh"
+  bash "$DOTFILES/install/$step.sh" || { echo "!! step '$step' failed" >&2; exit 1; }
 done
