@@ -61,6 +61,10 @@ require('telescope').load_extension('ui-select')
 require('gitsigns').setup()
 require('flash').setup()
 
+-- Shipped with Neovim but not loaded by default: :Undotree and :DiffTool.
+vim.cmd.packadd('nvim.undotree')
+vim.cmd.packadd('nvim.difftool')
+
 local parsers = {
   'bash', 'c', 'cmake', 'cpp', 'diff', 'dockerfile', 'gitignore', 'html', 'json', 'lua',
   'luadoc', 'make', 'markdown', 'markdown_inline', 'python', 'query', 'toml', 'vim', 'vimdoc',

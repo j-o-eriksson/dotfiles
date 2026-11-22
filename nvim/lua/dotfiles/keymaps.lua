@@ -39,6 +39,7 @@ map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Diagnostics to locati
 map('n', '<leader>dt', function()
   vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end, { desc = 'Toggle diagnostics' })
+map('n', '<leader>u', '<Cmd>Undotree<CR>', { desc = 'Toggle undo tree' })
 
 -- Completion: <C-n>/<C-p> move and <C-y> accepts, as built in.
 map('i', '<C-Space>', vim.lsp.completion.get, { desc = 'Show completion' })
