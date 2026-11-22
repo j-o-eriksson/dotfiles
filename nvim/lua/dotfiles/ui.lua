@@ -83,6 +83,6 @@ end, { desc = 'Toggle floating terminal' })
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
-    vim.hl.on_yank()
+    vim.hl.hl_op()
   end,
 })
