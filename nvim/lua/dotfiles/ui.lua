@@ -1,5 +1,5 @@
--- Floating UI: the command line in a box mid-screen, a notice while a macro records, and a
--- floating terminal.
+-- UI: the command line in a box mid-screen, a notice while a macro records, a floating
+-- terminal, and a brief highlight of yanked text.
 
 local ui2 = require('vim._core.ui2')
 -- Experimental: messages and the cmdline without "Press ENTER" prompts. With no command-line
@@ -80,3 +80,9 @@ vim.api.nvim_create_user_command('Floaterminal', function()
   end
   vim.cmd.startinsert()
 end, { desc = 'Toggle floating terminal' })
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.hl.on_yank()
+  end,
+})
